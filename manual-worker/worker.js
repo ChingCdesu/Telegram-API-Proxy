@@ -591,15 +591,15 @@ async function performAdvancedSecurityChecks(request) {
         }
     }
 
-    if (ALLOWED_COUNTRIES.length > 0) {
-        if (!ALLOWED_COUNTRIES.includes(country)) {
-            return { blocked: true, reason: 'Geographic restriction', status: 403 };
-        }
-    } else if (BLOCKED_COUNTRIES.length > 0) {
-        if (BLOCKED_COUNTRIES.includes(country)) {
-            return { blocked: true, reason: 'Geographic restriction', status: 403 };
-        }
-    }
+    // if (ALLOWED_COUNTRIES.length > 0) {
+    //     if (!ALLOWED_COUNTRIES.includes(country)) {
+    //         return { blocked: true, reason: 'Geographic restriction', status: 403 };
+    //     }
+    // } else if (BLOCKED_COUNTRIES.length > 0) {
+    //     if (BLOCKED_COUNTRIES.includes(country)) {
+    //         return { blocked: true, reason: 'Geographic restriction', status: 403 };
+    //     }
+    // }
 
     if (BLOCKED_USER_AGENTS.test(userAgent)) {
         await recordSuspiciousActivity(clientIP, 'blocked_user_agent');
